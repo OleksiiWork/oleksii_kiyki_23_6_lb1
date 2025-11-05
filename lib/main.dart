@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oleksii_kiyki_23_6_lb1/widgets/students.dart'; // Замініть your_project_name
+import 'package:oleksii_kiyki_23_6_lb1/widgets/students.dart';
 
 void main() {
   runApp(const MyApp());
