@@ -1,40 +1,40 @@
-import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
-//спеціальність
-enum Department {
-  finance,
-  law,
-  it,
-  medical,
-}
+enum Gender { male, female }
 
-//стать
-enum Gender {
-  male,
-  female,
-}
+const uuid = Uuid();
 
-//зіставлення іконок зі спеціальностями 
-const departmentIcons = {
-  Department.it: Icons.computer,
-  Department.finance: Icons.attach_money,
-  Department.law: Icons.gavel,
-  Department.medical: Icons.medical_services,
-};
-
-// Клас студента 
 class Student {
-  const Student({
+  Student({
+    String? id,
     required this.firstName,
     required this.lastName,
-    required this.department,
+    required this.departmentId,
     required this.grade,
     required this.gender,
-  });
+  }) : id = id ?? uuid.v4();
 
+  final String id;
   final String firstName;
   final String lastName;
-  final Department department;
+  final String departmentId;
   final int grade;
   final Gender gender;
+
+  Student copyWith({
+    String? firstName,
+    String? lastName,
+    String? departmentId,
+    int? grade,
+    Gender? gender,
+  }) {
+    return Student(
+      id: id,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      departmentId: departmentId ?? this.departmentId,
+      grade: grade ?? this.grade,
+      gender: gender ?? this.gender,
+    );
+  }
 }
